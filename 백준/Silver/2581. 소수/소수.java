@@ -1,5 +1,6 @@
-import java.util.OptionalInt;
+import java.util.IntSummaryStatistics;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class Main {
@@ -9,20 +10,16 @@ public class Main {
         int m = sc.nextInt();
         int n = sc.nextInt();
 
-        int result1 = IntStream.rangeClosed(m, n)
+        IntSummaryStatistics result = IntStream.rangeClosed(m, n)
                 .filter(a -> a > 1)
                 .filter(a -> IntStream.rangeClosed(2, (int)Math.sqrt(a)).allMatch(b -> a % b != 0))
-                .sum();
+                .boxed()
+                .collect(Collectors.summarizingInt(a -> a));
 
-        OptionalInt result2 = IntStream.rangeClosed(m, n)
-                .filter(a -> a > 1)
-                .filter(a -> IntStream.rangeClosed(2, (int)Math.sqrt(a)).allMatch(b -> a % b != 0))
-                .min();
-
-        if(result2 == OptionalInt.empty()) System.out.println(-1);
-        else{
-            System.out.println(result1);
-            System.out.println(result2.getAsInt());
+        if (result.getCount() == 0) System.out.println(-1);
+        else {
+            System.out.println(result.getSum());
+            System.out.println(result.getMin());
         }
     }
 }
