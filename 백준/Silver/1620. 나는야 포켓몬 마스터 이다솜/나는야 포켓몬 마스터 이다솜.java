@@ -25,9 +25,7 @@ public class Main {
         for (int i = 0; i < m; i++) {
             String tmp = br.readLine();
             if (map.containsKey(tmp)) sb.append(map.get(tmp)).append('\n');
-            else {
-                sb.append(reverseMap.get(tmp)).append('\n');
-            }
+            else sb.append(reverseMap.get(tmp)).append('\n');
         }
         System.out.println(sb);
     }
