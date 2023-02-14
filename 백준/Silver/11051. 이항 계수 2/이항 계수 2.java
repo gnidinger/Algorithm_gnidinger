@@ -17,7 +17,7 @@ public class Main {
 
 	static int combination(int n, int r) {
 
-		if (memo[n][r] > 0) {
+		if (memo[n][r] != 0) {
 			return memo[n][r];
 		}
 
