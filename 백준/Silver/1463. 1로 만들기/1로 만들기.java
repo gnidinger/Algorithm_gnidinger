@@ -4,34 +4,27 @@ import java.io.InputStreamReader;
 
 public class Main {
 
-	private static Integer[] memo;
-
 	public static void main(String[] args) throws IOException {
 
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
 		int n = Integer.parseInt(br.readLine());
-		memo = new Integer[n + 1];
-		memo[0] = memo[1] = 0;
+		int[] memo = new int[n + 1];
+		memo[1] = 0;
 
-		System.out.println(topDown(n));
+		for (int i = 2; i <= n; i++) {
+			memo[i] = memo[i - 1] + 1;
 
-	}
+			if (i % 2 == 0) {
+				memo[i] = Math.min(memo[i], memo[i / 2] + 1);
+			}
 
-	private static int topDown(int n) {
-
-		if (memo[n] == null) {
-			if (n % 2 == 0 && n % 3 == 0){
-				memo[n] = 1 + Math.min(Math.min(topDown(n / 2), topDown(n / 3)), topDown(n - 1));
-			} else if (n % 2 == 0 && n % 3 != 0) {
-				memo[n] = 1 + Math.min(topDown(n / 2), topDown(n - 1));
-			} else if (n % 2 != 0 && n % 3 == 0) {
-				memo[n] = 1 + Math.min(topDown(n / 3), topDown(n - 1));
-			} else  {
-				memo[n] = 1 + topDown(n - 1);
+			if (i % 3 == 0) {
+				memo[i] = Math.min(memo[i], memo[i / 3] + 1);
 			}
 		}
 
-		return memo[n];
+		System.out.println(memo[n]);
+
 	}
 }
