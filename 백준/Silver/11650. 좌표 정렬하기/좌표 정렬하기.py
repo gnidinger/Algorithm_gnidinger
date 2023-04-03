@@ -8,9 +8,7 @@ for _ in range(n):
     temp = list(map(int, list(sys.stdin.readline().strip().split())))
     b.append(temp)
 
-# print(sorted(b, key=lambda x: (x[0], x[1])), sep='\n')
+c = sorted(b, key=lambda x: (x[0], x[1]))
 
-b.sort()
-
-for i in b:
+for i in c:
     print(*i)
