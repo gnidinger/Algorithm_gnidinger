@@ -6,7 +6,7 @@ a = dict()
 
 for i in x:
     if i in a:
-        a[i] = a[i] + 1
+        a[i] += 1
     else:
         a[i] = 1
 
