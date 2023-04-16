@@ -7,27 +7,29 @@ result = []
 cnt = 0
 
 for _ in range(n):
-    a = int(sys.stdin.readline().rstrip())
+    num = int(sys.stdin.readline().rstrip())
+    
     if len(stack) == 0:
-        m = a - cnt
-        for i in range(m - 1, 0 - 1, -1):
-            stack.append(a - i)
+        m = num - cnt
+        for i in range(m - 1, -1, -1):
+            stack.append(num - i)
             result.append('+')
         result.append('-')
         cnt += 1
         stack.pop()
+        
     else:
-        if a < stack[-1]:
+        if num < stack[-1]:
             print('NO')
             sys.exit()
-        elif a == stack[-1]:
+        elif num == stack[-1]:
             result.append('-')
             cnt += 1
             stack.pop()
-        elif a > stack[-1]:
-            m = a - len(stack) - cnt
-            for i in range(m - 1, 0 - 1, -1):
-                stack.append(a - i)
+        elif num > stack[-1]:
+            m = num - len(stack) - cnt
+            for i in range(m - 1, -1, -1):
+                stack.append(num - i)
                 result.append('+')
             result.append('-')
             cnt += 1
