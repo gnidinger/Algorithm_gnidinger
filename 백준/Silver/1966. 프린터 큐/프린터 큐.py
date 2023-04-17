@@ -6,7 +6,7 @@ t = int(sys.stdin.readline().rstrip())
 
 for _ in range(t):
     n, m = map(int, sys.stdin.readline().rstrip().split())
-    dq = deque(list(i for i in range(n)))
+    dq = deque(range(n))
     tmp = deque(list(map(int, sys.stdin.readline().rsplit())))
 
     cnt = 0
