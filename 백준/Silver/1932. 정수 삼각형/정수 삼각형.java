@@ -1,6 +1,7 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class Main {
@@ -34,12 +35,6 @@ public class Main {
 			}
 		}
 
-		int result = memo[n - 1][0];
-
-		for (int i = 1; i < n; i++) {
-			result = Math.max(result, memo[n - 1][i]);
-		}
-
-		System.out.println(result);
+		System.out.println(Arrays.stream(memo[n - 1]).max().getAsInt());
 	}
 }
