@@ -17,7 +17,7 @@ def dfs(start, depth):
         if isVisited[i] is False:
             isVisited[i] = True
             lst[depth] = i
-            dfs(i + 1, depth + 1)
+            dfs(i, depth + 1)
             isVisited[i] = False
 
 
