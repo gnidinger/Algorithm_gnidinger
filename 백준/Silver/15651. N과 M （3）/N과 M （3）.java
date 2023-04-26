@@ -32,20 +32,14 @@ public class Main {
 		if (depth == m) {
 			for (int num : arr) {
 				sb.append(num).append(' ');
-				// System.out.print(num + " ");
 			}
 			sb.append('\n');
-			// System.out.println();
 			return;
 		}
 
 		for (int i = 1; i <= n; i++) {
-			if (!isVisited[i]) {
-				// isVisited[i] = true;
 				arr[depth] = i;
 				dfs(depth + 1);
-				// isVisited[i] = false;
-			}
 		}
 	}
 }
