@@ -4,7 +4,6 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 public class Main {
-
 	static int n;
 	static int m;
 	static int[] arr;
@@ -19,13 +18,12 @@ public class Main {
 		m = Integer.parseInt(st.nextToken());
 		arr = new int[m];
 
-		dfs(0, 1);
+		dfs(1, 0);
 
 		System.out.println(sb);
 	}
 
-	private static void dfs(int depth, int start) {
-
+	private static void dfs(int start, int depth) {
 		if (depth == m) {
 			for (int num : arr) {
 				sb.append(num).append(' ');
@@ -36,7 +34,7 @@ public class Main {
 
 		for (int i = start; i <= n; i++) {
 			arr[depth] = i;
-			dfs(depth + 1, i);
+			dfs(i, depth + 1);
 		}
 	}
 }
