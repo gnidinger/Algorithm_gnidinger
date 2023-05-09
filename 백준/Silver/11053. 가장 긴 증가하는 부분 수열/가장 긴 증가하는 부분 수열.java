@@ -17,19 +17,19 @@ public class Main {
 		int result = 1;
 
 		StringTokenizer st = new StringTokenizer(br.readLine());
+
 		for (int i = 0; i < n; i++) {
 			arr[i] = Integer.parseInt(st.nextToken());
 		}
 
 		for (int i = 0; i < n; i++) {
-			for (int j = 0; j <= i; j++) {
+			for (int j = 0; j < i; j++) {
 				if (arr[j] < arr[i] && memo[i] < memo[j] + 1) {
 					memo[i] = memo[j] + 1;
 					result = Math.max(result, memo[i]);
 				}
 			}
 		}
-
 		System.out.println(result);
 	}
 }
