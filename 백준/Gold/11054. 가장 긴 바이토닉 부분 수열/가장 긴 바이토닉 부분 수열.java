@@ -23,8 +23,6 @@ public class Main {
 			arr[i] = Integer.parseInt(st.nextToken());
 		}
 
-		// increase[0] = 1;
-		// decrease[0] = 1;
 		Arrays.fill(increase, 1);
 		Arrays.fill(decrease, 1);
 
