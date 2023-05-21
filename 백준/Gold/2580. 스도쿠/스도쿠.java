@@ -26,6 +26,7 @@ public class Main {
 	}
 
 	private static boolean sudoku(int row, int col) {
+
 		if (col == 9) {
 			return sudoku(row + 1, 0);
 		}
