@@ -1,33 +1,35 @@
-import java.io.*;
-import java.util.Arrays;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 public class Main {
-    public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws IOException {
 
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st = new StringTokenizer(br.readLine());
 
-        StringTokenizer st = new StringTokenizer(br.readLine());
+		int n = Integer.parseInt(st.nextToken());
+		int k = Integer.parseInt(st.nextToken());
 
-        int n = Integer.parseInt(st.nextToken());
-        int k = Integer.parseInt(st.nextToken());
+		int[] arr = new int[n];
 
-        int[] arr = new int[n];
-        int[] result = new int[n - k + 1];
+		st = new StringTokenizer(br.readLine());
+		for (int i = 0; i < n; i++) {
+			arr[i] = Integer.parseInt(st.nextToken());
+		}
 
-        StringTokenizer stn = new StringTokenizer(br.readLine());
+		int sum = 0;
+		for (int i = 0; i < k; i++) {
+			sum += arr[i];
+		}
 
-        for (int i = 0; i < k; i++) {
-            arr[i] = Integer.parseInt(stn.nextToken());
-            result[0] += arr[i];
-        }
+		int max = sum;
+		for (int i = k; i < n; i++) {
+			sum += arr[i] - arr[i - k];
+			max = Math.max(max, sum);
+		}
 
-        for (int i = k; i < n; i++) {
-            arr[i] = Integer.parseInt(stn.nextToken());
-            result[i - k + 1] = result[i - k] + arr[i] - arr[i - k];
-        }
-
-        System.out.println(Arrays.stream(result).max().getAsInt());
-    }
+		System.out.println(max);
+	}
 }
