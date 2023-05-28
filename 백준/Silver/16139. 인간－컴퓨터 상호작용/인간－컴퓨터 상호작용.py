@@ -22,4 +22,4 @@ for _ in range(q):
 
     results.append(count)
 
-print(*results, sep='\n')
+sys.stdout.write('\n'.join(map(str, results)) + '\n')
