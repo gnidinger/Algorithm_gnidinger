@@ -10,12 +10,12 @@ rl.on('line', (line) => {
 
     if (input.length === 2) {
         const a = parseInt(input[0]);
-        const b = parseInt(input[1]);
+        const [x, y, z] = input[1].split('').map(Number);
 
-        console.log(a * (b % 10));
-        console.log(a * Math.floor((b % 100) / 10));
-        console.log(a * Math.floor(b / 100));
-        console.log(a * b);
+        console.log(a * z);
+        console.log(a * y);
+        console.log(a * x);
+        console.log(a * Number(input[1]));
 
         rl.close();
     }
