@@ -15,12 +15,12 @@ rl.on('line', (line) => {
     } else if (n === 0) {
         n = parseInt(line);
     } else {
-        const [price, quantity] = line.split(' ').map(Number);
-        items.push({ price, quantity });
+        items.push(line.split(' ').map(Number));
         if (items.length === n) {
             let total = 0;
             for (let i = 0; i < n; i++) {
-                total += items[i].price * items[i].quantity;
+                const [a, b] = items[i];
+                total += a * b;
             }
             if (total === x) {
                 console.log('Yes');
