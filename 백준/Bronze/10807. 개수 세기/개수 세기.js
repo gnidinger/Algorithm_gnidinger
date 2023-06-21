@@ -3,14 +3,17 @@ const rl = require('readline').createInterface({
     output: process.stdout,
 });
 
-const input = [];
+let lines = [];
 
-rl.on('line', (line) => {
-    input.push(line.trim());
-}).on('close', () => {
-    const n = Number(input.shift());
-    const arr = input.shift().split(' ').map(Number);
-    const v = Number(input.shift());
-    const count = arr.filter((item) => item === v).length;
+rl.on('line', function (line) {
+    lines.push(line);
+}).on('close', function () {
+    let n = Number(lines[0]);
+    let arr = lines[1].split(' ').map(Number);
+    let v = Number(lines[2]);
+
+    const count = arr.filter(item => item === v).length;
+
     console.log(count);
+    process.exit();
 });
